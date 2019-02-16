@@ -1,73 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
-@import url('https://fonts.googleapis.com/earlyaccess/kokoro.css');
 
 .hello-caption{
     font-family: 'Amatic SC', cursive;
-}
-
-.hello-caption > h1{
-    font-size: 32pt;
-    font-weight: normal;
+    font-size: 24pt;
     margin: 0.5rem auto;
-}
-
-.hello-caption > p{
-    font-family: 'kokoro', cursive;
-    margin: -0.5rem auto;
-}
-
-ul.links{
-    display: table;
-    table-layout: fixed;
-    margin: 1rem auto;
-    padding: 0%;
-}
-
-ul.links li{
-    display:table-cell;
-    vertical-align:bottom;
-    width: 80pt;
-    height: 80pt;
-    text-align:center;
-}
-
-ul.links li a {
-    display:block;
-    text-decoration:none;
-    font-family: 'Amatic SC', cursive;
-    font-size: 21pt
-}
-
-ul.links li a img{
-    margin: auto;
-    display:block;
-    width: 4rem;
 }
 
 .center-parent{
     width: 100%;
-    height: auto;
+    height: 50%;
     position: relative;
     text-align: center;
 }
 
-@media only screen and (min-height:400px){
-    .center-inner{
-        width: 100%;
-        height: 50%;
-        top: 10pt;
-        bottom: 10pt;
-        left: 0pt;
-        right: 0pt;
-        position: fixed;
-        margin: auto;
-    }
-}
-@media only screen and (max-height:400px){
-    .center-inner{
-        width: 100%;
-        margin: auto;
-    }
+.center-inner{
+    width: 100%;
+    height: 100pt;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin: auto;
 }
 
 .progress-icon{
