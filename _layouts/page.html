@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article id="main">
+
+  <header>
+    <h2>{{ page.title }}</h2>
+    <p>{{ page.summary }}</p>
+  </header>
+
+  <section class=
+    {% if page.style %}
+      "{{ page.style }}"
+    {% else %}
+      "wrapper style5"
+    {% endif %}
+  >
+    <div class="inner">
+      {{ content }}
+    </div>
+  </section>
+</article>
