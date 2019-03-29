@@ -9,9 +9,11 @@ description: |
 dl_link: https://github.com/Masterexa/SimpleClock/releases
 layout: page_product_simple
 body_class: landing
+thumbnail: /images/portfolio/sc/thumb.png
+body_class: landing portfolio-sc
 ---
 
-## 必要スペック
+## 最低動作条件
 
 |||
 |:-|:-|

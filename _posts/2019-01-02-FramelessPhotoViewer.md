@@ -8,10 +8,11 @@ description: |
     また、当ソフトはJavaによって開発されておりWindows、macOS、Linuxなどなど幅広いプラットフォームに対応しています。
 dl_link: https://github.com/Masterexa/FramelessPhotoViewer/releases
 layout: page_product_simple
-body_class: landing
+thumbnail: /images/portfolio/fpv/thumb.png
+body_class: landing portfolio-fpv
 ---
 
-## 必要スペック
+## 最低動作条件
 
 |||
 |:-|:-|

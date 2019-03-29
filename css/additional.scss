@@ -78,6 +78,16 @@ body.landing{
 			@include vendor('background-image', ('linear-gradient(top, #{$banner-tint}, #{$banner-tint})', 'url("#{$baseurl}/portfolio/hts/banner.jpg")'));
         }
     }
+    &.portfolio-fpv{
+        #page-wrapper{
+			@include vendor('background-image', ('linear-gradient(top, #{$banner-tint}, #{$banner-tint})', 'url("#{$baseurl}/portfolio/fpv/banner.jpg")'));
+        }
+    }
+    &.portfolio-sc{
+        #page-wrapper{
+			@include vendor('background-image', ('linear-gradient(top, #{$banner-tint}, #{$banner-tint})', 'url("#{$baseurl}/portfolio/sc/banner.jpg")'));
+        }
+    }
 }
 
 body.is-mobile{
@@ -91,6 +101,7 @@ body.is-mobile{
 				background-size: cover;
             }
         }
+        
     }
 }
 
@@ -202,4 +213,8 @@ body.is-mobile{
         position: absolute;
         z-index: 2;
     }
+}
+
+.place-center{
+    justify-content: center;
 }
