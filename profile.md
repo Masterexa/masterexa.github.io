@@ -4,6 +4,7 @@ title: 自己紹介
 icon: icon fa-mortar-board style4
 style: wrapper style4
 body_class: landing
+permalink: profile
 ---
 
 ## {{ page.title }}
