@@ -458,6 +458,10 @@ $baseurl: '{{ site.baseurl }}/images';
 			border-radius: 0;
 			padding: 0;
 		}
+
+		@include breakpoint(xsmall) {
+            padding: 1.5em 0;
+        }
 	}
 
 /* Icon */
@@ -1586,7 +1590,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		}
 
 		@include breakpoint(small) {
-			@include padding(7em, 3em);
+			@include padding(7em, 1em);
 			height: auto;
 			min-height: 0;
 
@@ -1595,7 +1599,7 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 
 			br {
-				display: none;
+				/*display: none;*/
 			}
 
 			.more {

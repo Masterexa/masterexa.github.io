@@ -37,11 +37,19 @@ figcaption{
     &.banner{
         font-size: 30pt;
         margin: 0.5rem auto;
+
+        @include breakpoint(xsmall) {
+            font-size: x-large;
+        }
     }
 
     &.banner-sub{
         font-size: large;
         margin: 0.5rem auto;
+
+        @include breakpoint(xsmall) {
+            font-size: x-small;
+        }
     }
 }
 
