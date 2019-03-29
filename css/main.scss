@@ -61,7 +61,7 @@ $baseurl: '{{ site.baseurl }}/images';
 		line-height: 1.65em;
 
 		@include breakpoint(xlarge) {
-			font-size: 13pt;
+			font-size: 12pt;
 		}
 
 		@include breakpoint(large) {
