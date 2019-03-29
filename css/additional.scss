@@ -38,7 +38,7 @@ figcaption{
         font-size: 30pt;
         margin: 0.5rem auto;
 
-        @include breakpoint(xsmall) {
+        @include breakpoint(small) {
             font-size: x-large;
         }
     }
@@ -47,6 +47,9 @@ figcaption{
         font-size: large;
         margin: 0.5rem auto;
 
+        @include breakpoint(small) {
+            font-size: small;
+        }
         @include breakpoint(xsmall) {
             font-size: x-small;
         }
