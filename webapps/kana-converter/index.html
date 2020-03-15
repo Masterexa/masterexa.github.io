@@ -1,0 +1,49 @@
+---
+layout: page
+title: ｶﾅ・コンバーター
+---
+
+<script src="/webapps/kana-converter/js/main.js" defer></script>
+<style>
+    .close-button{
+        position: absolute;
+        right: 0;
+        top: 1em;
+    }
+    .lock-resize{
+        resize: vertical;
+    }
+</style>
+
+
+<section>
+    <div class="row uniform">
+        <div class="12u">
+            <div class="select-wrapper">
+                <select name="convert-mode" id="convert-mode">
+                    <option value="to-katakana">「かな」⇒「カナ」</option>
+                    <option value="to-hiragana">「カナ」⇒「かな」</option>
+                    <option value="shuffle">シャッフルする</option>
+                </select>
+            </div>
+        </div>
+        <div class="6u 12u$(small)">
+            <input id="use-randomize" type="checkbox" name="use-randomize" value="check">
+            <label for="use-randomize">ランダムに変換</label>
+        </div>
+        <div class="6u$ 12u$(small)" style="display: none;">
+            <input id="randomize-seed" type="text" name="randomize-seed" placeholder="シード値">
+        </div>
+    </div>
+    
+    <hr>
+
+    <div class="row uniform">
+        <div class="6u 12u$(small)" style="position: relative;">
+            <textarea id="kc-src-text" name="kc-src-text" rows="6" placeholder="ここにテキストを入力してください" class="lock-resize"></textarea>
+        </div>
+        <div class="6u$ 12u$(small)">
+            <textarea id="kc-dst-text" name="kc-dst-text" rows="6" readonly class="lock-resize"></textarea>
+        </div>
+    </div>
+</section>
