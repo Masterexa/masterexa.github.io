@@ -56,3 +56,5 @@ social:
 markdown: kramdown
 #sass:
 #  style: compressed
+
+google_analytics: UA-167983455-2
