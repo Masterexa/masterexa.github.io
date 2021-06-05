@@ -1,0 +1,129 @@
+---
+title: かなコンバーター
+layout: blank
+---
+
+<main class="c-header-wrapper">
+
+    <div class="c-article">
+        <h1>かなコンバーター</h1>
+        <form class="c-kanaconv">
+            <select class="c-kanaconv__mode" name="convert-mode" id="convert-mode">
+                <option value="to-katakana">「かな」⇒「カナ」</option>
+                <option value="to-hiragana">「カナ」⇒「かな」</option>
+                <option value="shuffle">シャッフルする</option>
+            </select>
+    
+            <div class="c-label-set">
+                <input id="use-randomize" type="checkbox" name="use-randomize" value="check">
+                <label for="use-randomize">ランダムに変換</label>
+            </div>
+
+            <hr/>
+    
+            <div class="c-kanaconv__textarea-container">
+                <textarea id="source-text" class="c-kanaconv__textarea" data-responsive-textarea></textarea> 
+                <textarea id="dest-text" class="c-kanaconv__textarea" readonly data-responsive-textarea></textarea> 
+            </div>
+        </form>
+    </div>
+
+    <script defer>
+        $(function()
+        {
+            const height = new Map();
+            const $textarea = $("textarea[data-responsive-textarea]");
+            $textarea.on("input", function(e)
+            {
+                const target = e.target;
+                if( !height.has(target) )
+                {
+                    height.set(target, target.clientHeight);
+                }
+                const h = height.get(target);
+
+                target.style.height = `${h}px`;
+                target.style.height = `${target.scrollHeight}px`;
+            });
+        });
+
+        $(function()
+        {
+            const ConvertModes={
+                "to-katagana": 0,
+                "to-hiragana": 1,
+                "shuffle": 2,
+            };
+            var convertMode     = ConvertModes["to-katakana"];
+            var useRandomize    = false;
+            var randomizeSeed   = null;
+
+
+            $("#convert-mode").change(function(){
+                convertMode = ConvertModes[ $(this).val() ];
+                convert();
+            });
+
+            $("#use-randomize").change(function(){
+                useRandomize = $(this).is(':checked');
+                convert();
+            });
+
+            $("#randomize-seed").change(function(){
+                randomizeSeed = $(this).val();
+            });
+
+            $("#source-text").on( "keyup change paste",function(){
+                convert();
+            });
+
+
+            function convert(){
+                var str = $("#source-text").val();
+
+                switch(convertMode){
+                    case ConvertModes["to-katakana"]:
+                        str = convertKana(str,true);
+                        break;
+                    case ConvertModes["to-hiragana"]:
+                        str = convertKana(str,false);
+                        break;
+                    case ConvertModes["shuffle"]:
+                        str = convertKana(str,true);
+                        str = convertKana(str,false);
+                        break;
+                }
+                $('#dest-text').val(str);
+            }
+
+
+
+            function convertKana(str,isKatakana){
+                var range = isKatakana ? /[\u3041-\u3096]/g : /[\u30a1-\u30f6]/g;
+                var sign = isKatakana ? 1 : -1;
+
+                setupSeed();
+                return str.replace(range, function(m)
+                {
+                    return String.fromCharCode(m.charCodeAt(0) + getAdditional()*sign );
+                });
+            }
+
+            function setupSeed()
+            {
+                // MADA NAI
+            }
+
+            function isRandomize()
+            {
+                return convertMode==ConvertModes["shuffle"] || useRandomize;
+            }
+
+            function getAdditional()
+            {
+                return (isRandomize() && Math.random()>0.5) ? 0 : 0x60;
+            }
+
+        });
+    </script>
+</main>

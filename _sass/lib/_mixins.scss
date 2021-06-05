@@ -1,0 +1,48 @@
+$breakpoints:(
+    'x-small': 'screen and (max-width: 425px)',
+    'small': 'screen and (max-width: 768px)',
+    'medium': 'screen and (max-width: 1024px)',
+    'portrait': '(max-aspect-ratio: 1/1)',
+    'landscape': '(min-aspect-ratio: 1/1)',
+    'wide': '(min-aspect-ratio: 2/1)',
+    'portrait-or-x-small': 'screen and (max-width: 501px), (max-aspect-ratio: 1/1)',
+) !default;
+
+@mixin break-on($bp: small){
+    @media #{map-get($breakpoints,$bp)}{
+        @content;
+    }
+}
+
+@mixin gradient-text($color: #ACB6E5, $background: linear-gradient(45deg, #ACB6E5, #86FDE8))
+{
+    color: $color;
+    background: $background;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    border-image: $background;
+    border-image-slice: 1;
+    border-image-repeat: stretch;
+}
+
+@mixin mixin-fullscreen
+{
+    width: 100%;
+    height: 100vh;
+}
+
+
+$aligns: left,center,right,justify,justify-all,start,end,match-parent;
+@each $item in $aligns {
+    .align-#{$item}
+    {
+        text-align: #{$item};
+    }
+}
+
+@function kimiguna-absolute-url($url)
+{
+    @return url("#{$kimiguna-url}#{$url}");
+}

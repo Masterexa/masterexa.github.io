@@ -1,0 +1,174 @@
+---
+title: ほしゆきトゥーンシェーダー
+title_alt: ほしゆき<wbr>トゥーンシェーダー
+layout: post
+no_wrapper: true
+permalink: /projects/hoshiyuki-toon-shader
+banner:
+    url: /projects/hoshiyuki-toon-shader/images/custom-surface-shader.jpg
+    position: 70% 50%
+    class: print--cover
+thumbnail:
+    url: /projects/hoshiyuki-toon-shader/images/custom-surface-shader.jpg
+    position: 70% 50%
+button_links:
+    -
+        type: download
+        version: 1.0.0
+        url: https://github.com/Masterexa/HoshiyukiToonShader/releases
+    -
+        type: github
+        url: https://github.com/Masterexa/HoshiyukiToonShader
+    -
+        type: wiki
+        url: https://github.com/Masterexa/HoshiyukiToonShader/wiki
+summary: |
+    ゲームも動画もVRも！！
+categories: Projects
+tags: Unity シェーダー
+---
+
+<script defer>
+    $(function()
+    {
+        $(".twentytwenty-container").twentytwenty();
+    });
+</script>
+
+<section>
+    <header class="major alt align-center">
+        <h2>ライティング</h2>
+        <p>トゥーンシェーディングに新たな「光」を</p>
+    </header>
+
+    <section class="c-hts-section">
+        <div class="c-article">
+            <img class="c-image" src="{{ './images/blade.png' | prepend:relative_url }}" />
+            <h3>ライティングにこだわる理由</h3>
+            <p>
+                光は単に影や境界を作るだけではありません。
+                影の世界を光の世界から流れ込むように照らす「間接光」、夜空の星から青空の太陽までの10の12乗の明るさを捉える人間の「桿体細胞」と「錐体細胞」。
+                これらをヒントに、写真や映像、コンピューターグラフィックスは豊かな表現力を獲得してきました。
+            </p>
+            <p>
+                それは、アニメや漫画、イラストの世界でも例外ではありません。
+            </p>
+        </div>
+    </section>
+
+    <section class="c-hts-section">
+        <div class="c-article">
+            <figure>
+                <div class="c-screen-only">
+                    <div class="c-image size--fit">
+                        <div class="twentytwenty-container">
+                            <!-- The before image is first -->
+                            <img src="{{'./images/gi-before.jpg' | prepend:relative_url }}" />
+                            <!-- The after image is last -->
+                            <img src="{{'./images/gi-after.jpg' | prepend:relative_url }}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="c-print-only">
+                    <div class="c-hts-comparison">
+                        <div>
+                            <img src="{{'./images/gi-before.jpg' | prepend:relative_url }}" />
+                            <figcaption>通常のグローバルイルミネーション</figcaption>
+                        </div>
+                        <div>
+                            <img src="{{'./images/gi-after.jpg' | prepend:relative_url }}" />
+                            <figcaption>単色グローバルイルミネーション</figcaption>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+            <div>
+                <h3>キャラクターのための特別なグローバルイルミネーション</h3>
+                <p>
+                    間接光を表現するグローバルイルミネーションはトゥーンシェーディングの世界ではあまり脚光を浴びませんでした。
+                    その理由のひとつは周囲の光が照らされることによって不自然なグラデーションが現れるためです。これはフォトリアルなグラフィックスには最適でしたが、セルルックな見た目には相性はよくありませんでした。
+                </p>
+                <p>
+                    ほしゆきトゥーンシェーダーでは「<b>単色グローバルイルミネーション</b>」によってこの問題を克服し、セルルックでも間接光の恩恵を受けることができるようになりました。
+                </p>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+
+<section>
+    <header class="align-center">
+        <h2>サーフェイスシェーダー</h2>
+        <p>思いつきを冷めないうちに</p>
+    </header>
+    <section class="c-hts-section">
+        <div class="c-article">
+            <figure>
+                <img class="c-image size--fit" src="{{ './images/custom-surface-shader.jpg' | prepend:relative_url }}" />
+            </figure>
+        
+            <div class="c-split">
+                <div class="c-split__right">
+                    <figure class="c-image size--fit hts--center">
+                        <img src="{{ './images/cs-menu.png' | prepend:relative_url }}" />
+                    </figure>
+                </div>
+                <div class="c-split__left">
+                    <h3>右クリックで「すぐに」<wbr>作成</h3>
+                    <p>
+                        通常のマテリアル設定でも、色やテクスチャなどの調整を行うことができます。
+                        <br/>しかし、時には凝ったエフェクトを作成したいと思うことがあるハズです。
+                    </p>
+                    <p>
+                        そんなときはサーフェイスシェーダーを使いましょう！<br>
+                        ほしゆきトゥーンシェーダーでは、煩雑なコード解析を行うことなくすぐにエフェクトを作成できます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section>
+    <div>
+        <h2 class="align-center">その他</h2>
+
+        <div class="c-article">
+            <div class="c-split">
+                <div class="c-split__left">
+                    <figure class="c-image size--fit">
+                        <img src="{{ './images/inspector.png' | prepend:relative_url }}" alt=""/>
+                    </figure>
+                </div>
+                <div class="c-split__right">
+                    <p>編集や修正を容易に行えるよう、直感的なユーザーインターフェイスを採用しています。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <h2 class="align-center">最低動作条件</h2>
+    <div class="c-article">
+        <table>
+            <tbody>
+                <tr>
+                    <th>バージョン</th>
+                    <td>Unity 2017.1以降</td>
+                </tr>
+                <tr>
+                    <th>プラットフォーム</th>
+                    <td>PC<br>(その他のプラットフォームは未検証)</td>
+                </tr>
+                <tr>
+                    <th>シェーダーモデル</th>
+                    <td>3.0以上</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

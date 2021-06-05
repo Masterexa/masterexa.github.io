@@ -1,0 +1,57 @@
+---
+title: ブログ
+permalink: /blog/
+layout: blank
+---
+
+<main>
+    <article class="c-header-wrapper">
+        <section class="c-article">
+            <header class="c-headline">
+                <h1 class="align-center">ブログ</h1>
+            </header>
+            <div class="c-post-container">
+                {% for post in site.posts %}
+                    {% if post.thumbnail.url %}
+                        {% assign thumbnail_url=post.thumbnail.url %}
+                    {% else %}
+                        {% assign thumbnail_url="/common/images/mp_test.jpg" %}
+                    {% endif %}
+
+                    <article class="c-post-card">
+                        <div class="c-post-card__inner">
+                            <a class="c-post-card__thumbnail" href="{{ post.url }}" data-portal-transition>
+                                <img src="{{ thumbnail_url | prepend:relative_url }}" alt="" style="{% if post.thumbnail.position %}object-position: {{ post.thumbnail.position }};{% endif %}">
+                            </a>
+                            <a class="c-post-card__title" href="{{ post.url }}" data-portal-transition>
+                                <h1>{{ post.title }}</h1>
+                            </a>
+                            <div class="c-post-card__excerpt">
+                                {{ post.excerpt }}
+                            </div>
+                            <div class="c-post-card__footer">
+                                <dl>
+                                    <div>
+                                        <dt><i class="far fa-folder-open"></i></dt>
+                                        <dd>
+                                            <ul class="list--category">
+                                                {% for cat in post.categories %}
+                                                    <li>{{ cat }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </dd>
+                                    </div>
+                                    <div>
+                                        <dt><i class="far fa-calendar-alt"></i></dt>
+                                        <dd><time datetime="{{post.date}}">{{ post.date | date:"%-d %B %Y, %R" }}</time></dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    </article>
+</main>
+    

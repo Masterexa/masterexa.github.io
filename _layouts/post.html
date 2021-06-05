@@ -1,0 +1,159 @@
+---
+---
+<!DOCTYPE html>
+
+{% if page.title_alt %}
+    {% assign title=page.title_alt %}
+{% else %}
+    {% assign title=page.title %}
+{% endif %}
+
+{% if page.no_wrapper %}
+    {% assign post_content_class="" %}
+{% else %}
+    {% assign post_content_class="c-article screen--half-min theme--article" %}
+{% endif %}
+
+
+<html lang="ja">
+    <head>
+        {% include head-common.html %}
+    </head>
+    <body class="{{ page.style_class }}">
+        {% include site-header.html %}
+
+        <main id="post">
+            <article class="article">
+                <header class="c-article-banner {{page.banner.class}}">
+                    <div class="c-article-banner__image" id="post-banner-image"
+                        {% if page.banner.url %}
+                            style="{% if page.banner.url %}background-image: url('{{ page.banner.url | relative_url }}');{% endif %} {% if page.banner.position %}background-position: {{ page.banner.position }};{% endif %}"
+                        {% endif %}
+                    ></div>
+                    <div class="c-article-banner__text">
+                        <ul id="post-categories" class="c-article-banner__categories">
+                            {% for cat in page.categories %}
+                                <li>{{ cat }}</li>
+                            {% endfor %}
+                        </ul>
+                        <h1 id="post-title" class="c-article-banner__title">{{ title }}</h1>
+                        
+                        <div id="post-date" class="c-article-banner__date">
+                            <time datetime="{{page.date}}">{{ page.date | date:"%-d %B %Y, %R" }}</time>
+                        </div>
+                        <dl id="post-button-links" class="c-article-banner__button-links">
+
+                            {% for link in page.button_links %}
+                                {% assign icon = 'fas fa-link' %}
+                                {% assign title = 'Link' %}
+                                {% assign href = link.url %}
+
+                                <div class="c-button-link">
+                                    {% if link.type=="download" %}
+                                        {% assign icon = 'fas fa-download' %}
+                                        {% assign title = "DL" %}
+                                    {% elsif link.type=="github" %}
+                                        {% assign icon = 'fab fa-github' %}
+                                        {% assign title = 'Github' %}
+                                    {% elsif link.type=="wiki" %}
+                                        {% assign icon = 'fas fa-book' %}
+                                        {% assign title = 'Wiki' %}
+                                    {% endif %}
+
+                                    <dt class="c-button-link__icon">
+                                        <a href="{{href}}">
+                                            <i class="{{icon}}"></i>
+                                        </a>
+                                    </dt>
+                                    <dd class="c-button-link__label">
+                                        <a href="{{href}}">
+                                            {{ title }}
+                                        </a>
+                                    </dd>
+                                    <dd class="c-button-link__url">
+                                        {{href}}
+                                    </dd>
+                                </div>
+                            {% endfor %}
+                        </dl>
+
+                        <ul id="post-tags" class="c-article-banner__tags">
+                            {% for tag in page.tags %}
+                                <li><i class="fas fa-tag"></i>{{ tag }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </header>
+                
+                <section id="post-content" class="{{post_content_class}}">
+                    {{ content | markdownify}}
+                </section>
+            </article>
+            <script defer>
+                $(function(){
+                    var g_delay = 100;
+                    var g_tagDelay = 250;
+    
+                    var $title= $("#post-title");
+                    var $postDate = $("#post-date");
+                    var $postCategory = $("#post-categories");
+                    var $postBannerImage = $("#post-banner-image");
+                    var $postContent = $("#post-content");
+                    var $tags = $("#post-tags li");
+                    var $buttonLinks = $("#post-button-links > div");
+                    var $spans = null;
+                    
+                    function animateTitle(i)
+                    {
+                        if( i<$spans.length )
+                        {
+                            $spans.eq(i).addClass("fadein");
+                            setTimeout(()=>animateTitle(i+1), g_delay);
+                        }
+                        else{
+                            animateTitle2();
+                        }
+                    }
+    
+                    function animateTitle2()
+                    {
+                        $postBannerImage.addClass("fadein");
+                        
+                        setTimeout(()=>$postCategory.addClass("fadein"), 250);
+                        setTimeout(()=>$postDate.addClass("fadein"), 500);
+                        setTimeout(()=>{
+                            $postContent.addClass("fadein");
+                            animateTitle2T(0, $tags);
+                            animateTitle2T(0, $buttonLinks);
+                        }, 750);
+                        
+                    }
+    
+                    function animateTitle2T(i,target)
+                    {
+                        if( i<target.length )
+                        {
+                            target.eq(i).addClass("fadein");
+                            setTimeout(()=>animateTitle2T(i+1,target), g_tagDelay);
+                        }
+                    }
+
+
+                    $title.children().addBack().contents().each(function()
+                    {
+                        if( this.nodeType==Node.TEXT_NODE )
+                        {
+                            $(this).replaceWith($(this).text().replace(/(\S)/g, '<span>$1</span>'));
+                        }
+                    });
+                    $spans = $title.find("span");
+                    g_delay = (1/$spans.length)*1000;
+                    setTimeout(()=>animateTitle(0), 500);
+                });
+            </script>
+        </main>
+        
+        {% include site-footer.html %}
+        {% include site-transition-portal.html %}
+    </body>
+</html>

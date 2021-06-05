@@ -1,0 +1,96 @@
+
+.c-post-container
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c-post-card
+{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0.5em;
+    
+    &__inner
+    {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 0 1px rgba($color: #000000, $alpha: 0.1);
+
+        transition: 0.25s linear;
+        &:hover
+        {
+            box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
+        }
+    }
+    &__thumbnail
+    {
+        display: block;
+        position: relative;
+        width: 100%;
+        &::before
+        {
+            content: "";
+            display: block;
+            padding-top: 100% * 9/16;
+        }
+        img{
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    &__title
+    {
+        display: block;
+        padding: 1em;
+        h1{
+            font-size: 24px;
+        }
+        text-decoration: none;
+    }
+    &__excerpt
+    {
+        margin: 0 1em;
+        border-top: 1px solid ;
+        flex-grow: 1;
+    }
+    &__footer
+    {
+        margin: 1em;
+        dl{
+            margin: 0;
+            div{
+                margin: 0;
+                dt{
+                    float: left;
+                }
+                dd{
+                    margin-left: 2em;
+                }
+                &::after{
+                    clear: both;
+                }
+            }
+        }
+    }
+
+
+    @include break-on(small)
+    {
+        width: 100%;
+        padding: 0.5em 0;
+    }
+}

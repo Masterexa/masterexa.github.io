@@ -1,0 +1,29 @@
+@keyframes keyframes-portal-circle {
+    from{
+        opacity: 100%;
+        clip-path: circle(0px at 50% 50%);
+    }
+    to{
+        opacity: 100%;
+        clip-path: circle(100% at 50% 50%);
+    }
+}
+.c-transition-portal
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+
+    display: none;
+    opacity: 0%;
+    overflow: hidden;
+    pointer-events: none;
+
+    &.activate{
+        display: block;
+        animation: keyframes-portal-circle 0.5s linear 0.5s 1 normal forwards;
+    }
+}

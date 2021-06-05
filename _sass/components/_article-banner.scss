@@ -1,0 +1,316 @@
+@charset "utf-8";
+
+@keyframes keyframes-title-character-in
+{
+    0%{
+        opacity: 100%;
+        transform: rotateX(90deg) translateZ(2rem) ;
+    }
+    100%{
+        opacity: 100%;
+        transform: rotateX(0) translateZ(-2rem);
+    }
+}
+@keyframes keyframes-post-date-in
+{
+    0%{
+        opacity: 0%;
+        transform: translateX(-10%);
+    }
+    100%{
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
+@keyframes keyframes-post-category-in
+{
+    0%{
+        opacity: 0%;
+        transform: translateX(10%);
+    }
+    100%{
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
+@keyframes keyframes-post-tag-in
+{
+    0%{
+        opacity: 0%;
+        transform: translateY(200%);
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+
+.c-article-banner
+{
+    display: grid;
+    grid-template-columns: 1fr 40%;
+
+    width: 100%;
+    height: 100vh;
+    padding: 3rem 0 0 0;
+    box-sizing: border-box;
+
+    &__image
+    {
+        grid-column: 1;
+
+        background-image: kimiguna-absolute-url("/common/images/mp_test.jpg");
+        background-size: cover;
+        background-position: center;
+
+        transition: opacity 1s 0s linear;
+        opacity: 0%;
+        &.fadein{
+            opacity: 100%;
+        }
+    }
+
+    &__text
+    {
+        grid-column: 2;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 2rem 0 1rem;
+    }
+    &__title
+    {
+        margin: 0;
+        white-space: break-spaces;
+        word-break: break-all;
+
+        span{
+            display: inline-block;
+            opacity: 0;
+            backface-visibility: hidden;
+            height: 1rem;
+
+            &.fadein{
+                animation: 0.6s cubic-bezier(0, 1.01, 1, 1) 0s 1 normal forwards running keyframes-title-character-in;
+            }
+        }
+    }
+    &__date
+    {
+        display: block;
+        opacity: 0;
+        text-align: right;
+        &.fadein{
+            animation: 1s cubic-bezier(0, 1.01, 1, 1) 0s 1 normal forwards running keyframes-post-date-in;
+        }
+    }
+    &__categories
+    {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding-inline-start: 0;
+        opacity: 0;
+
+        li{
+            &::after{
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                content: "\f105";
+                margin: 0 0.5em;
+            }
+        }
+        &.fadein{
+            animation: 1s cubic-bezier(0, 1.01, 1, 1) 0s 1 normal forwards running keyframes-post-category-in;
+        }
+    }
+    &__tags
+    {
+        margin: 1.5em 0;
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding-inline-start: 0;
+
+        li{
+            margin: 0 1em 0 0;
+        }
+        li{
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(0);
+            &.fadein{
+                animation: 1s cubic-bezier(0, 1.01, 1, 1) 0s 1 normal forwards running keyframes-post-tag-in;
+            }
+        }
+    }
+    &__button-links
+    {
+        margin: 0;
+        display: flex;
+    }
+}
+.c-button-link
+{
+    margin: 0;
+    width: 64px;
+    height: 64px;
+
+    display: grid;
+    grid-template-rows: 40px 1fr;
+
+    a{
+        text-decoration: none;
+    }
+    &__icon
+    {
+        grid-column: 1;
+        grid-row: 1;
+
+        font-size: 24px;
+        text-align: center;
+    }
+    &__label
+    {
+        grid-column: 1;
+        grid-row: 2;
+
+        padding-inline-start: 0;
+        text-align: center;
+    }
+    &__url
+    {
+        grid-column: 2;
+        grid-row: 2;
+
+        display: none;
+        padding-inline-start: 0;
+    }
+
+    opacity: 0;
+    &.fadein{
+        animation: 1s cubic-bezier(0, 1.01, 1, 1) 0s 1 normal forwards running keyframes-post-tag-in;
+    }
+}
+
+
+@include break-on(wide)
+{
+    .c-article-banner
+    {
+        width: 100%;
+        height: 50vw;
+    }
+}
+@include break-on(small)
+{
+    .c-article-banner
+    {
+        display: block;
+        height: auto;
+    
+        &__image
+        {
+            width: 100%;
+            height: 70vh;
+        }
+        &__text
+        {
+            display: block;
+            padding: 1rem 2rem;
+        }
+    }
+}
+@include break-on(x-small)
+{
+    .c-article-banner
+    {
+        &__text
+        {
+            display: block;
+            padding: 1rem;
+        }
+    }
+}
+
+
+@if $kimiguna-media-type=="print"
+{
+    .c-article-banner
+    {
+        page-break-after: auto;
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+
+        &__image
+        {
+            width: 100%;
+            height: (100vh / 4);
+            background-size: cover;
+            background-position: center;
+        }
+        &__text
+        {
+            display: block;
+            padding: 1rem 0;
+        }
+        &__button-links
+        {
+            flex-direction: column;
+        }
+
+        .theme--white-on-black &
+        {
+            &__text
+            {
+                display: block;
+                padding: 1rem;
+            }
+        }
+    }
+    .c-button-link
+    {
+        margin: 0.5em 0;
+        grid-template-rows: repeat(2,50%);
+        grid-template-columns: 64px 1fr;
+        width: 100%;
+        height: 2.5em;
+
+        &__icon
+        {
+            grid-column: 1;
+            grid-row: 1/3;
+        }
+        &__label
+        {
+            grid-column: 2;
+            grid-row: 1;
+            text-align: left;
+        }
+        &__url
+        {
+            display: block;
+        }
+    }
+
+    .c-article-banner.print--cover
+    {
+        height: 100vh;
+        page-break-after: always;
+
+        .c-article-banner
+        {
+            &__image
+            {
+                height: 100%;
+                flex-shrink: 1;
+            }
+        }
+    }
+}

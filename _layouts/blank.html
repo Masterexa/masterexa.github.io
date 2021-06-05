@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        {% include head-common.html %}
+    </head>
+    <body>
+        {% include site-header.html %}
+
+        <div>
+            {{ content | markdownify}}
+        </div>
+
+        {% include site-footer.html %}
+        {% include site-transition-portal.html %}
+    </body>
+</html>
