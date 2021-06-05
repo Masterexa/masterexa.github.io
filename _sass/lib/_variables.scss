@@ -1,9 +1,13 @@
-$serif-font-family:         "Yu Mincho",serif;
-$sans-serif-font-family:    "Yu Gothic","Meiryo",sans-serif;
-$monospace-font-family:     "consolas",monospace;
+$serif-font-family: "Hiragino Mincho ProN","Yu Mincho",'Noto Serif JP',serif;
+$sans-serif-font-family: "Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+$monospace-font-family: "consolas",monospace;
+
+$logo-font-famliy: 'Amatic SC', cursive;
+$body-font-family: $serif-font-family;
 $screen-font-size: 16px;
 $print-font-size: 10pt;
 
+$form-font-family: $sans-serif-font-family;
 $form-outline-color: gray;
 $form-focus-color: #00a2ff;
 

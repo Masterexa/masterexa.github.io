@@ -1,5 +1,5 @@
 body{
-    font-family: $serif-font-family;
+    font-family: $body-font-family;
     font-size: $screen-font-size;
 
     &.theme--darkmode
@@ -42,7 +42,7 @@ body{
 
 
 h1{
-    font-size: 2em;
+    font-size: 1.75em;
     //margin-bottom: 1rem;
 }
 h2{
@@ -60,7 +60,7 @@ h4{
 h6{
     font-size: 0.75em;
 }
-@include break-on(x-small)
+@include break-on(small)
 {
     h1{
         font-size: 1.5em;
@@ -233,7 +233,7 @@ tfoot{
 // Form
 
 form{
-    font-family: $sans-serif-font-family;
+    font-family: $form-font-family;
 }
 fieldset{
     border: 2px solid gray;
@@ -244,7 +244,7 @@ fieldset{
 input,select,textarea,button,datalist
 {   
     max-width: 100%;
-    font-family: $sans-serif-font-family;
+    font-family: $form-font-family;
     -webkit-appearance: auto;
     appearance: auto;
     &:disabled
