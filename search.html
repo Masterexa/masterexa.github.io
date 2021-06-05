@@ -1,0 +1,146 @@
+---
+title: 検索
+permalink: /search
+layout: blank
+---
+
+<main>
+    <article class="c-header-wrapper">
+        <div class="c-article">
+            <header class="c-headline">
+                <h1 class="align-center">サイト検索</h1>
+            </header>
+
+            <div id="results" class="c-post-container">
+            </div>
+        </div>
+    </article>
+
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="{{ '/common/js/tinyseg.js' | relative_url }}"></script>
+    <script src="{{ '/common/js/lunr.stemmer.support.js' | relative_url }}"></script>
+    <script src="{{ '/common/js/lunr.ja.js' | relative_url }}"></script>
+    <script defer>
+
+        let BlogSearch =
+        {
+            idx: null,
+            loadedData: [],
+
+            getParam(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            },
+            search(query)
+            {
+                if( !query )
+                {
+                    return;
+                }
+
+                const results = this.idx.search(query);
+                this.showResult(results);
+            },
+            hasQueryParam()
+            {
+                return this.getParam("q");
+            },
+            searchFromQuery(delay=false)
+            {
+                var q = this.getParam("q");
+                if( q )
+                {
+                    $("#site-search-query").val(q);
+                    this.search( q );
+                }
+            },
+            showResult(results)
+            {
+                const $results = $("#results")
+                $results.empty();
+
+                if( results.length )
+                {
+                    for(const result of results)
+                    {
+                        var post = this.loadedData[result.ref];
+
+                        const html = `<article class="c-post-card">
+                                        <div class="c-post-card__inner">
+                                            <a class="c-post-card__thumbnail" href="${post.url}" data-portal-transition>
+                                                <img src="${post.thumbnail?.url}" alt="${post.thumbnail?.alt}" style="object-position: ${post.thumbnail?.position};">
+                                            </a>
+                                            <a class="c-post-card__title" href="${post.url}" data-portal-transition>
+                                                <h1>${post.title}</h1>
+                                            </a>
+                                            <div class="c-post-card__excerpt">
+                                                ${ decodeURI(post.excerpt) }
+                                            </div>
+                                            <div class="c-post-card__footer">
+                                                <dl>
+                                                    <div>
+                                                        <dt><i class="far fa-folder-open"></i></dt>
+                                                        <dd>
+                                                            <ul class="list--category">
+                                                                ${ post.categories.map( it=>`<li>${it}</li>` ).join("") }
+                                                            </ul>
+                                                        </dd>
+                                                    </div>
+                                                    <div>
+                                                        <dt><i class="far fa-calendar-alt"></i></dt>
+                                                        <dd><time datetime="${post.date}">${post.date_formatted}</time></dd>
+                                                    </div>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </article>`
+                        $results.append(html);
+                    }
+                }
+            }
+        };
+
+        $(function()
+        {
+            const data = $.getJSON("{{ '/common/search-data.json' | relative_url }}");
+            data.then(function(response){
+                BlogSearch.loadedData = response;
+
+                BlogSearch.idx = lunr(function(){
+                    this.use(lunr.ja);
+                    this.field('id');
+                    this.field('title', {boost:10});
+                    this.field('author');
+                    this.field('categories');
+                    this.field('tags');
+                    
+                    const self = this;
+                    $.each(BlogSearch.loadedData, function(index,value){
+                        const row = $.extend({"id":index}, value);
+                        self.add(row);
+                    });
+                });
+            });
+
+            
+            if( BlogSearch.hasQueryParam() )
+            {
+                var intervalId = setInterval(waitThenSearch, 100);
+                function waitThenSearch()
+                {
+                    if( BlogSearch.idx?.search )
+                    {
+                        clearInterval(intervalId);
+                        BlogSearch.searchFromQuery(false);
+                    }
+                }
+            }
+        });
+    </script>
+</main>
+    

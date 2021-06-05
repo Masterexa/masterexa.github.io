@@ -1,0 +1,126 @@
+
+{% if include.class %}
+    {% assign class = include.class %}
+{% else %}
+    {% assign class = '' %}
+{% endif %}
+
+<nav class="c-site-header {{ class }}">
+    <div class="c-site-header__pseudo-shadow"></div>
+    <div class="c-site-header-menubar">
+        <div class="c-site-header-menubar__inner">
+            <div class="c-site-header-menubar__logo">
+                <a href="/" data-portal-transition>
+                    Masterexa's<span class="c-site-header-menubar__paper">paper edition</span>
+                </a>
+            </div>
+        
+            <ul class="c-site-header-menubar__links">
+                {% for item in site.permalinks %}
+                    <li class="b-item">
+                        <a href="{{ item.href }}" class="{{ item.class }}" data-portal-transition>
+                            <span class="b-item__icon"><i class="{{ item.icon }}"></i></span>
+                            <span class="b-item__label">{{ item.label }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="c-site-header-menubar__search">
+                <form id="site-search" onsubmit="return false;">
+                    <input id="site-search-query" type="text" placeholder="サイト検索">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="c-site-header-menubar__title">
+                {{ page.title }}
+            </div>
+        </div>
+    </div>
+
+    <div class="c-site-header-dialog" id="site-banner-dialog">
+        <h1 class="c-site-header-dialog__logo">
+            Masterexa's
+        </h1>
+        <ul class="c-site-header-dialog__links">
+                <li class="b-item">
+                    <a href="/" class="home" data-portal-transition>
+                        <span class="b-item__icon"><i class="fas fa-home"></i></span>
+                        <span class="b-item__label">Home</span>
+                    </a>
+                </li>
+            {% for item in site.permalinks %}
+                <li class="b-item">
+                    <a href="{{ item.href }}" class="{{ item.class }}" data-portal-transition>
+                        <span class="b-item__icon"><i class="{{ item.icon }}"></i></span>
+                        <span class="b-item__label">{{ item.label }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="c-site-header-dialog__pseudo-shadow"></div>
+    </div>
+
+    <div class="c-site-header__button" id="site-banner-toggle">
+        <button class="iconbtn"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="c-site-header__blocker" id="site-header-blocker"></div>
+
+
+    <script defer>
+        $(function()
+        {
+            var isVisible = false;
+            const $blocker = $("#site-header-blocker");
+            const $toggle = $("#site-banner-toggle");
+            const $dialog = $("#site-banner-dialog");
+
+            function toggleVisible(visible)
+            {
+                isVisible = visible;
+                if( isVisible )
+                {
+                    $toggle.addClass("is-visible");
+
+                    $dialog.removeClass("is-invisible");
+                    $dialog.addClass("is-visible");
+
+                    $blocker.addClass("is-visible");
+
+                    Cookies.set("menudialog__visible", true);
+                }
+                else{
+                    $toggle.removeClass("is-visible");
+
+                    $dialog.removeClass("is-visible");
+                    $dialog.addClass("is-invisible");
+
+                    $blocker.removeClass("is-visible");
+                    
+                    Cookies.set("menudialog__visible", false);
+                }
+            }
+
+            $toggle.on("click", function(e)
+            {
+                toggleVisible(!isVisible);
+            });
+
+            $blocker.on("click",function(e)
+            {
+                toggleVisible(false);
+            });
+
+            $("#site-search").on("submit", function()
+            {
+                const query = $("#site-search-query").val();
+                if(query)
+                {
+                    window.location.href = `/search?q=${encodeURIComponent(query)}`;
+                }
+            });
+        });
+    </script>
+</nav>

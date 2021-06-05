@@ -1,0 +1,23 @@
+
+@keyframes keyframes-post-content-in
+{
+    0%{
+        opacity: 0%;
+        transform: translateY(25vh);
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+#post-content
+{
+    position: relative;
+    opacity: 0%;
+    transform: translateY(0);
+    display: block;
+
+    &.fadein{
+        animation: 2s cubic-bezier(0, 1.01, 1, 1) 0s 1 normal forwards running keyframes-post-content-in;
+    }
+}

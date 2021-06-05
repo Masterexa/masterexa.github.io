@@ -1,0 +1,201 @@
+
+
+.c-print-only
+{
+    @if $kimiguna-media-type=="print"
+    {
+        display: block;
+    }
+    @else{
+        display: none;
+    }
+}
+.c-screen-only
+{
+    @if $kimiguna-media-type=="screen"
+    {
+        display: block;
+    }
+    @else{
+        display: none;
+    }
+}
+
+
+.c-header-wrapper
+{
+    padding-top: 3rem;
+}
+.c-article
+{
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 2rem;
+
+    @include break-on(x-small)
+    {
+        padding: 0 1rem;
+    }
+
+    img{
+        max-width: 100%;
+    }
+
+    @if $kimiguna-media-type=="print"
+    {
+        padding: 0 0;
+
+        .theme--white-on-black &
+        {
+            padding: 0 1rem;
+        }
+    }
+}
+
+.c-headline
+{
+    margin: 2em 0;
+}
+
+.c-centering
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &__inner
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+.c-centering.h
+{
+    .c-centering
+    {
+        &__inner
+        {
+            position: absolute;
+            top: 50%;
+            left: auto;
+            transform: translateY(-50%);
+        }
+        @include break-on(small)
+        {
+            &__inner
+            {
+                transform: none;
+            }
+        }
+    }
+}
+
+.screen
+{
+    &--full-h
+    {
+        height: 100vh;
+    }
+    &--full
+    {
+        width: 100%;
+        height: 100vh;
+    }
+    &--half
+    {
+        height: 50vh;
+    }
+    &--half-min
+    {
+        min-height: 50vh;
+    }
+}
+.size
+{
+    &--expand
+    {
+        height: 100%;
+        width: 100%;
+
+        object-fit: cover;
+        object-position: center;
+    }
+    &--expand-w
+    {
+        width: 100%;
+    }
+
+    &--fit
+    {
+        width: 100%;
+        height: auto;
+    }
+}
+@if $kimiguna-media-type=="print"
+{
+    .screen
+    {
+        &--half-min
+        {
+            min-height: auto;
+        }
+    }
+}
+.c-image
+{
+    border-radius: 8px;
+    overflow: hidden;
+    &.size--fit
+    {
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+@if $kimiguna-media-type=="print"
+{
+    .c-image
+    {
+        page-break-inside: avoid;
+    }
+}
+
+.c-split
+{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+
+    &__left{
+        grid-row: 1;
+        grid-column: 1;
+    }
+    &__right{
+        grid-column: 2;
+    }
+
+    &__left,&__right
+    {
+        >.c-image
+        {
+            padding: 0.5em;
+        }
+    }
+
+
+    @include break-on(small)
+    {
+        display: block;
+    }
+}
+.c-box{
+    padding: 0.5em;
+}
+
+.c-table-wrapper
+{
+    width: 100%;
+    overflow-x: scroll;
+}

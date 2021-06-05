@@ -1,88 +1,25 @@
 ---
-layout: landing
+title: Goodbye my home, Hello world!!
 ---
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>
-								<span class="site-title banner">Goodbye my home,<wbr> Hello world!<br></span>
-								<span class="site-title banner-sub">～マスターエクサのサイト～</span>
-							</h2>
-							<p>{{ site.description | markdownify }}</p>
-							<!--
-							<ul class="actions">
-								<li>
-									<a href="#one" class="button special">Activate</a>
-								</li>
-							</ul>
-							-->
-							<ul class="icons major special">
-								<li>
-									<a href="profile" class="icon fa-mortar-board major"><span class="label">Profile</span></a>
-								</li>
-								<li>
-									<a href="portfolio" class="icon fa-download major"><span class="label">Portfolio</span></a>
-								</li>
-								<li>
-									<a href="arts" class="icon fa-image major"><span class="label">Arts</span></a>
-								</li>
-								<li>
-									<a href="{{ site.social.twitter }}" class="icon fa-twitter major"><span class="label">Twitter</span></a>
-								</li>
-								<li>
-									<a href="{{ site.social.github }}" class="icon fa-github major"><span class="label">Github</span></a>
-								</li>
-								<li>
-									<a href="{{ site.social.pixiv }}" class="icon mxa-pixiv major"><span class="label">pixiv</span></a>
-								</li>
-							</ul>
-						</div>
-						<a href="#pickup" class="more scrolly">Pickups</a>
-					</section>
+<!DOCTYPE html>
 
-				<!-- ONE -->
+<html lang="ja">
+    <head>
+        {% include head-common.html %}
+    </head>
+    <body class="p-top theme--white-on-black">
+        {% include site-header.html class="transparent" %}
 
-				<!-- Two -->
-					<section id="pickup" class="wrapper alt style5">
-						<section class="spotlight">
-							<div class="image"><img src="images/profile/thumb.jpg" alt="" /></div>
-							<div class="content">
-								<h2>自己紹介</h2>
-								<p>自己紹介をします</p>
-								<a href="profile">Learn More</a>
-							</div>
-						</section>
-						<section class="spotlight">
-								<div class="image"><img src="images/portfolio/hts/thumb.jpg" alt="" /></div>
-								<div class="content">
-									<h2>ほしゆきトゥーンシェーダー</h2>
-									<p>ほしゆきトゥーンシェーダーはUnity向けのトゥーンシェーディングエフェクトで、アニメやイラストを3DCG上で再現することを目標しています。</p>
-									<a href="/products/HoshiyukiToonShader">Learn More</a>
-								</div>
-						</section>
-						<section class="spotlight">
-								<div class="image"><img src="images/portfolio/fpv/thumb.png" alt="" /></div>
-								<div class="content">
-									<h2>Frameless Photo Viewer</h2>
-									<p>Frameless Photo ViewerはPC向けの写真閲覧ソフトで、写真を枠を持たないウィンドウに表示することによって、画像編集の効率化を図ることができます。</p>
-									<a href="/products/FramelessPhotoViewer">Learn More</a>
-								</div>
-						</section>
-					</section>
+        <main>
+            <header class="c-top-banner">
+                <div class="c-top-banner__image"></div>
+                <div class="c-top-banner__text">
+                    <h1>Goodbye <wbr>my home, <br>Hello world!!</h1>
+                </div>
+            </header>
+        </main>
 
-				<!-- Three -->
-
-				<!-- CTA 
-					<section id="cta" class="wrapper style4">
-						<div class="inner">
-							<header>
-								<h2>Arcue ut vel commodo</h2>
-								<p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
-							</header>
-							<ul class="actions vertical">
-								<li><a href="#" class="button fit special">Activate</a></li>
-								<li><a href="#" class="button fit">Learn More</a></li>
-							</ul>
-						</div>
-					</section>
-				-->
+        {% include site-footer.html %}
+        {% include site-transition-portal.html %}
+    </body>
+</html>

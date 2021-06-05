@@ -1,0 +1,23 @@
+@charset "utf-8";
+@import "/common/styles/destyle.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+@import "lib/variables";
+@import "lib/mixins";
+
+@import "lib/base";
+@import "lib/layouts";
+
+@import "components/site-header";
+@import "components/site-footer";
+@import "components/article-banner";
+@import "components/post-card";
+@import "components/transition-portal";
+
+@import "details/top";
+@import "details/about";
+@import "details/post";
+@import "details/hts";
+@import "details/kana-converter";

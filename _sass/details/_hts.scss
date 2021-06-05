@@ -1,0 +1,62 @@
+
+.c-hts-image
+{
+    width: 100%;
+}
+
+.c-hts-section
+{
+    margin: 25vmin 0;
+}
+
+.hts--center
+{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.c-hts-comparison
+{
+    page-break-inside: avoid;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+
+    width: 100%;
+    height: 60vw;
+    margin: 0.25em 0;
+
+    >div{
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 60% 50%;
+        }
+
+        &:first-child
+        {
+            img{
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+            }
+        }
+        &:last-child
+        {
+            img{
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+        }
+    }
+}
+
+@if $kimiguna-media-type=="print"
+{
+    .c-hts-section
+    {
+        margin: 0;
+        page-break-after: always;
+    }
+}

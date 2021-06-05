@@ -1,0 +1,38 @@
+---
+title: プロジェクト
+layout: blank
+permalink: /projects/
+---
+
+<main>
+    <div class="c-header-wrapper">
+        <div class="c-article">
+            <header class="c-headline">
+                <h1 class="align-center">プロジェクト</h1>
+            </header>
+            <div class="c-post-container">
+                {% for post in site.projects %}
+                    {% if post.thumbnail.url %}
+                        {% assign thumbnail_url=post.thumbnail.url %}
+                    {% else %}
+                        {% assign thumbnail_url="/common/images/mp_test.jpg" %}
+                    {% endif %}
+
+                    <article class="c-post-card">
+                        <div class="c-post-card__inner">
+                            <a class="c-post-card__thumbnail" href="{{ post.url }}" data-portal-transition>
+                                <img src="{{ thumbnail_url | prepend:relative_url }}" alt="" style="{% if post.thumbnail.position %}object-position: {{ post.thumbnail.position }};{% endif %}">
+                            </a>
+                            <a class="c-post-card__title" href="{{ post.url }}" data-portal-transition>
+                                <h1>{{ post.title }}</h1>
+                            </a>
+                            <div class="c-post-card__excerpt">
+                                {{ post.summary | markdownify }}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>

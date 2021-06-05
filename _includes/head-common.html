@@ -1,0 +1,24 @@
+
+{% if page.non_sitename!=nil %}
+    {% assign non_sitename=page.non_sitename %}
+{% else %}
+    {% assign non_sitename=true %}
+{% endif %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title }}{% if non_sitename %} - {{ site.title }}{% endif %}</title>
+<link rel="icon" href="{{'/favicon.ico' | relative_url }}">
+
+<link href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script src="{{'/common/js/jquery-3.6.0.min.js' | relative_url }}"></script>
+
+<script src="{{ '/common/js/jquery.event.move.js' | relative_url }}"></script>
+<script src="{{ '/common/js/jquery.twentytwenty.js | relative_url }}"></script>
+<link rel="stylesheet" href="{{ '/common/styles/twentytwenty.css' | relative_url }}">
+
+<link rel="stylesheet" href="{{ '/common/styles/screen.css' | relative_url }}" media="screen">
+<link rel="stylesheet" href="{{ '/common/styles/print.css' | relative_url }}" media="print">
+<script src="{{ '/common/js/main.js' | relative_url }}"></script>
