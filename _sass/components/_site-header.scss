@@ -106,7 +106,7 @@
         align-items: center;
     }
     &__logo{
-        font-family: 'Amatic SC', 'kokoro', cursive;
+        font-family: $logo-font-famliy;
         font-size: 32px;
 
         &:hover
@@ -250,7 +250,7 @@
     }
 
     &__logo{
-        font-family: 'Amatic SC', 'kokoro', cursive;
+        font-family: $logo-font-famliy;
         font-size: 32px;
         text-align: center;
     }
