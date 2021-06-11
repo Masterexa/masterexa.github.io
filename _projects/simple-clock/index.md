@@ -1,7 +1,7 @@
 ---
 title: Simple Clock
 layout: post
-permalink: /projects/simple-clock
+permalink: /products/SimpleClock
 banner:
     url: /projects/simple-clock/images/banner.jpg
 thumbnail:

@@ -1,7 +1,7 @@
 ---
 title: Frameless Photo Viewer
 layout: post
-permalink: /projects/frameless-photo-viewer
+permalink: /products/FramelessPhotoViewer
 button_links:
     - 
         type: download
